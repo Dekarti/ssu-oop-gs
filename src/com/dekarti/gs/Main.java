@@ -1,5 +1,6 @@
 package com.dekarti.gs;
 
+import com.dekarti.gs.Station;
 import javafx.animation.*;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -31,7 +32,7 @@ public class Main extends Application {
     public void start(Stage stage) {
         primaryStage = stage;
         primaryStage.setTitle("Gas Station");
-        javafx.geometry.Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+
 
         primaryStage.setWidth(WIDTH);
         primaryStage.setHeight(HEIGHT);
@@ -43,12 +44,8 @@ public class Main extends Application {
         timeLine.setCycleCount(Timeline.INDEFINITE);
         timeLine.getKeyFrames().add(
                 new KeyFrame(Duration.millis(20),
-                        new EventHandler<ActionEvent>() {
-
-                            @Override
-                            public void handle(ActionEvent t) {
-                                station.update();
-                            }
+                        t -> {
+                            station.update();
                         }
                 )
         );

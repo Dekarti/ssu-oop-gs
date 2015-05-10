@@ -2,7 +2,6 @@ package com.dekarti.gs;
 
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
 import java.util.LinkedList;
