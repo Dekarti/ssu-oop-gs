@@ -239,9 +239,11 @@ public class Car extends Object {
                 Dispenser.getComparator());
 
         if (mostComfortableDispenser.getQueueSize() >= 3) {
-            //this.setTarget(Target.GET_AWAY);
+            this.currentGasStation.increaseLoss();
+            this.setTarget(Target.GET_AWAY_FROM_GS);
         } else {
             this.currentDispenser = mostComfortableDispenser;
+            this.currentGasStation.increaseProfit();
         }
 
 
@@ -456,7 +458,7 @@ public class Car extends Object {
                "ID: " + this.getId() + "\n" +
                "Next car: " + (this.getNextCar() != null ? this.getNextCar().getId() : "null") + "\n" +
                "Previous car: " + (this.getPreviousCar() != null ? this.getPreviousCar().getId() : "null") + "\n" +
-               (this.currentDispenser != null ? "Current dispenser total: " + this.currentDispenser.getTotalOfDispenser() : " ");
+               (this.currentDispenser != null ? "Current dispenser total: " + this.currentDispenser.getTotalOfDispenser(this.getRecommendedRating()) : " ");
 
 
 

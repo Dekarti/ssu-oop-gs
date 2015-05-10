@@ -136,9 +136,15 @@ public class Dispenser extends ImageView {
      *
      * @return расход топлива
      */
-    public int getTotalOfDispenser() {
+    public double getTotalOfDispenser(OctaneRating octaneRating) {
 
-        return totalAI_92 + totalAI_95 + totalAI_98;
+        if (octaneRating == OctaneRating.AI_92) {
+            return totalAI_92;
+        } else if (octaneRating == OctaneRating.AI_95) {
+            return totalAI_95;
+        } else {
+            return totalAI_98;
+        }
 
 
 
@@ -152,17 +158,14 @@ public class Dispenser extends ImageView {
      */
     public static Comparator<Dispenser> getComparator() {
 
-        Comparator<Dispenser> dispenserComparator = new Comparator<Dispenser>() {
-            @Override
-            public int compare(Dispenser o1, Dispenser o2) {
-                if (o1.getQueueSize() < o2.getQueueSize()) {
-                    return -1;
-                }
-                else if (o1.getQueueSize() > o2.getQueueSize()) {
-                    return  1;
-                }
-                return 0;
+        Comparator<Dispenser> dispenserComparator = (o1, o2) -> {
+            if (o1.getQueueSize() < o2.getQueueSize()) {
+                return -1;
             }
+            else if (o1.getQueueSize() > o2.getQueueSize()) {
+                return  1;
+            }
+            return 0;
         };
         return dispenserComparator;
 
