@@ -43,7 +43,7 @@ public class Main extends Application {
         Timeline timeLine = new Timeline();
         timeLine.setCycleCount(Timeline.INDEFINITE);
         timeLine.getKeyFrames().add(
-                new KeyFrame(Duration.millis(20),
+                new KeyFrame(Duration.millis(10),
                         t -> {
                             station.update();
                         }
