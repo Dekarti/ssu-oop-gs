@@ -63,7 +63,7 @@ public class Dispenser extends ImageView {
         this.setX(id % 2 != 0
                 ? Main.WIDTH * (id / 6.0) - 55.0
                 : Main.WIDTH * ((id - 1) / 6.0) + 5.0);
-        this.setY(Main.HEIGHT / 2.0);
+        this.setY(Main.HEIGHT / 1.5);
 
         this.fitHeightProperty().setValue(DISPENSER_HEIGHT);
         this.fitWidthProperty().setValue(DISPENSER_WIDTH);

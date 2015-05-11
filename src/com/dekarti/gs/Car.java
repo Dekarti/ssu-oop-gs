@@ -457,7 +457,8 @@ public class Car extends Object {
                "Gas state: " + this.getGasolineStocks() + "/" + this.getFuelCapacity() + "\n" +
                "ID: " + this.getId() + "\n" +
                "Next car: " + (this.getNextCar() != null ? this.getNextCar().getId() : "null") + "\n" +
-               "Previous car: " + (this.getPreviousCar() != null ? this.getPreviousCar().getId() : "null") + "\n";
+               "Previous car: " + (this.getPreviousCar() != null ? this.getPreviousCar().getId() : "null") + "\n" +
+               "Octane rating" + this.getRecommendedRating();
 
 
 
