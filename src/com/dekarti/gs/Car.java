@@ -11,6 +11,15 @@ import java.util.*;
 
 /**
  * ќпределе€ет класс ћашина.
+ *
+ * ѕример использовани€:
+ * <pre>
+ *     // создаем объект машины с текущим запасом топлива равным 140/500, с 92 октановым числом
+ *     // и указанным изображением машины, которое задаетс€ классом Image,
+ *     // конструктор которого принимает путь к изображению.
+ *     Car car = new Car(140, OctaneRating.AI_92, 500, new Image("your/path/to/cars/pic"));
+ *
+ * </pre>
  */
 public class Car extends Object {
 
@@ -318,7 +327,7 @@ public class Car extends Object {
     public void refuel() {
 
         if (this.getGasolineStocks() == this.getFuelCapacity()) {
-            this.setTarget(Target.GET_AWAY);
+            this.setTarget(Target.GET_AWAY_FROM_DISPENSER);
         } else {
             this.increaseGasolineStocks();
             this.currentDispenser.increaseTotal(this.getRecommendedRating());
@@ -384,7 +393,7 @@ public class Car extends Object {
             case REFUEL:
                 this.refuel();
                 break;
-            case GET_AWAY:
+            case GET_AWAY_FROM_DISPENSER:
                 this.getAway();
                 break;
             case GET_AWAY_FROM_GS:
