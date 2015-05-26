@@ -15,6 +15,21 @@ import java.util.Vector;
 
 /**
  * ќпредел€ет класс «аправочна€ станци€ с 6-ю колонками.
+ * <hr>
+ * <b>ѕример использовани€:</b>
+ * <pre>
+ *     // создаем станцию размером 100х100 и располагаем в точке (500, 500)
+ *     Station station = new Station(500, 500, 100, 100);
+ *
+ *     // вывод информации о машинах, которые покинули заправку не заправшившись
+ *     System.out.println(station.getLoss());
+ *
+ *     // вывод информации о машинах, успешно заправившихс€
+ *     System.out.println(station.getProfit());
+ *
+ *
+ * </pre>
+ *
  */
 public class Station extends Object {
 

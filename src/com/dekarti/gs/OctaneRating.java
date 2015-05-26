@@ -1,6 +1,14 @@
 package com.dekarti.gs;
 
 /**
- * Created by Root on 02.05.2015.
+ * Класс описывает перечисление типов топлива по октановому числу.
  */
-enum OctaneRating { AI_92, AI_95, AI_98 }
+enum OctaneRating {
+
+    AI_92,
+    AI_95,
+    AI_98
+
+
+
+}

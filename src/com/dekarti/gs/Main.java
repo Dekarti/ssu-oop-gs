@@ -19,9 +19,19 @@ import javafx.util.Duration;
 
 import java.util.Random;
 
+/**
+ * Класс Main определяет точку входа программы.
+ */
 public class Main extends Application {
 
+    /**
+     * Ширина сцены
+     */
     static public double WIDTH = 1200;
+
+    /**
+     * Выоста сцены
+     */
     static public double HEIGHT = 900;
     public static Stage primaryStage;
 

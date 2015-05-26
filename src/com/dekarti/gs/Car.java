@@ -10,16 +10,63 @@ import javafx.scene.text.Text;
 import java.util.*;
 
 /**
- * ќпределе€ет класс ћашина.
+ * ќпределе€ет класс ћашина.<br> <hr>
  *
- * ѕример использовани€:
+ * <b>ѕример использовани€:</b>
  * <pre>
  *     // создаем объект машины с текущим запасом топлива равным 140/500, с 92 октановым числом
  *     // и указанным изображением машины, которое задаетс€ классом Image,
  *     // конструктор которого принимает путь к изображению.
  *     Car car = new Car(140, OctaneRating.AI_92, 500, new Image("your/path/to/cars/pic"));
  *
+ *     // выведем текущее значение топлива в консоль
+ *     System.out.println("ƒо заправки: " + car.getGasolineStocks());
+ *
+ *     // увеличим запас топлива на 10 у.е.
+ *     for (int i = 0; i < 10; ++i) {
+ *          car.increaseGasolineStocks();
+ *     }
+ *
+ *     // выведем текущее значение топлива в консоль
+ *     System.out.println("ѕосле заправки: " + car.getGasolineStocks() + "\n");
+ *
+ *     // ¬ыведем текущую координату машины по оси ординат. ќна будет равна нулю т.к.
+ *     // машине еще не назначена заправочна€ станци€.
+ *     System.out.println(" оордината по оси ординат до передвижени€: " + car.getY());
+ *
+ *     // передвинем машину вперед на 10 у.е
+ *     for (int i = 0; i < 10; ++i) {
+ *          car.move();
+ *     }
+ *
+ *     // выведем текущее положение машины по оси ординат
+ *     System.out.println(" оордината по оси ординат после передвижени€: " + car.getY());
+ *
+ *     // создадим произвольную заправочную станцию и назначим ее нашей машине
+ *     Station station = new Station();
+ *     car.setGS(station);
+ *
+ *     // выведем на экран информацию о машине
+ *     System.out.println(car.toString());
+ *
+ *
  * </pre>
+ * <hr>
+ * <b>¬ывод:</b><br>
+ * ƒо заправки: 140 <br>
+ * ѕосле заправки: 150 <br>
+ * <br>
+ *  оордината по оси ординат до передвижени€: 0 <br>
+ *  оордината по оси ординат после передвижени€: 10 <br>
+ * <br>
+ * Target: CHOOSE_DISPENSER <br>
+ * Gas state: 10.0/500.0 <br>
+ * ID: null <br>
+ * Next car: null <br>
+ * Previous car: null <br>
+ * Octane ratingAI_92 <br>
+ *
+ *
  */
 public class Car extends Object {
 
@@ -242,7 +289,7 @@ public class Car extends Object {
     /**
      * ¬ыбирает наиболее выгодную колонку на станции.
      */
-    public void chooseDispener() {
+    private void chooseDispener() {
 
         Dispenser mostComfortableDispenser = Collections.min(currentGasStation.getDispensers(),
                 Dispenser.getComparator());
@@ -262,7 +309,7 @@ public class Car extends Object {
     /**
      * —тавит в очередь на колонку.
      */
-    public void getInLineStepOne() {
+    private void getInLineStepOne() {
 
         if (this.currentDispenser.getQueueSize() != 0) {
             this.setY(this.currentDispenser.getCarQueue().getLast().getY() - 2 * CAR_HEIGHT);
@@ -280,9 +327,9 @@ public class Car extends Object {
     }
 
     /**
-     * ƒвигает до тех пор пока не встанет позади последней машины в очереди.
+     * ѕеремещает машину до тех пор пока не встанет позади последней машины в очереди.
      */
-    public void getInLineStepTwo() {
+    private void getInLineStepTwo() {
 
         if (this.getNextCar() == null) {
             if (this.getY() == this.currentDispenser.getY()) {
@@ -303,7 +350,7 @@ public class Car extends Object {
     /**
      * ѕродвигает в очереди.
      */
-    public void moveInLine() {
+    private void moveInLine() {
 
         if (this.getNextCar() == null) {
             if (this.getY() == this.currentDispenser.getY()) {
@@ -324,7 +371,7 @@ public class Car extends Object {
     /**
      * «аправл€ет до полного бака.
      */
-    public void refuel() {
+    private void refuel() {
 
         if (this.getGasolineStocks() == this.getFuelCapacity()) {
             this.setTarget(Target.GET_AWAY_FROM_DISPENSER);
@@ -340,7 +387,7 @@ public class Car extends Object {
     /**
      * ќсвобождает колонку.
      */
-    public void getAway() {
+    private void getAway() {
 
         this.currentDispenser.getCarQueue().remove(this);
         if (this.getPreviousCar() != null) {
@@ -358,7 +405,7 @@ public class Car extends Object {
     /**
      * ”бирает машину с заправки.
      */
-    public void removeFromGS() {
+    private void removeFromGS() {
 
         this.currentGasStation.root.getChildren().remove(this);
         /*this.currentDispenser = null;
@@ -410,7 +457,7 @@ public class Car extends Object {
      * ¬озвращает машину, идущую спереди в очереди.
      * @return машина спереди
      */
-    public Car getNextCar() {
+    private Car getNextCar() {
 
         return nextCar;
 
@@ -434,7 +481,7 @@ public class Car extends Object {
      * ¬озвращает машину, идующую сзади.
      * @return машина сзади
      */
-    public Car getPreviousCar() {
+    private Car getPreviousCar() {
 
         return previousCar;
 
