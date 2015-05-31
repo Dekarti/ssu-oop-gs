@@ -21,6 +21,15 @@ import java.util.Vector;
  *     // создаем станцию размером 100х100 и располагаем в точке (500, 500)
  *     Station station = new Station(500, 500, 100, 100);
  *
+ *     // создадим несколько машин и поставим их на заправку в нашей станции
+ *     Car car1 = new Car(140, OctaneRating.AI_92, 500, new Image("your/path/to/cars/pic"));
+ *     Car car2 = new Car(140, OctaneRating.AI_92, 500, new Image("your/path/to/cars/pic"));
+ *     Car car3 = new Car(140, OctaneRating.AI_92, 500, new Image("your/path/to/cars/pic"));
+ *     car1.setGS(station);
+ *     car2.setGS(station);
+ *     car3.setGS(station);
+ *
+ *
  *     // вывод информации о машинах, которые покинули заправку не заправшившись
  *     System.out.println(station.getLoss());
  *

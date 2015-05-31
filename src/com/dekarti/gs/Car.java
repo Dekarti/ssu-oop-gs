@@ -257,7 +257,7 @@ public class Car extends Object {
 
         this.currentGasStation = gs;
         this.currentGasStation.addToCarStream(this);
-        currentGasStation.addToScene(this);
+
 
 
 
@@ -320,6 +320,7 @@ public class Car extends Object {
         this.setX(this.currentDispenser.getIdOfDispenser() % 2 == 0
                 ? this.currentDispenser.getX() + CAR_WIDTH + 10.0
                 : this.currentDispenser.getX() - CAR_WIDTH - 10.0);
+        currentGasStation.addToScene(this);
         this.target = Target.GET_IN_LINE;
 
 
